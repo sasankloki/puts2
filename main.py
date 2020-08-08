@@ -1,19 +1,29 @@
 from flask import Flask, request
+from fractions import Fraction
 
 app = Flask(__name__)
 
-@app.route('/')
-def index():
-    return 'Usage;\n<Operation>?A=<Value1>&B=<Value2>\n'
+
+def in_take():
+    if request.method != 'GET':
+        x = request.values.get('X', default=0, type=str) 
+
+    else:
+        
+        x = request.args.get('X', default=0, type=str)
+    try:
+        new_values=[]
+        for val in x.split(','):
+            new_values.append(Fraction(val))
+        
+       
+    except ValueError:
+        warning = "Enter a valid input vector. "
+        return warning
+
+    return new_values
 
 
-@app.route('/add')
-def addition():
-    value1=request.args.get('A',default = 0, type = int)
-    value2=request.args.get('B',default = 0, type = int)
-    result=value1+value2
-    return '%d \n' % result
+if __name__=="__main__":
+    app.run(debug=True)
 
-
-if __name__ == "__main__":
-    app.run()

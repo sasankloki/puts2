@@ -10,23 +10,11 @@ class AdvanceCalc(unittest.TestCase):
 
     
     
-    def test_avg(self):
-        #Testing the average or mean or avg
+    def test_max(self):
 
-        reply = self.app.get("/average?X=1,2,3,4,5,6")
-        self.assertEqual(b'3.5 \n', reply.data)
+        #Test script for taking  maximum value in a given list
+        reply=self.app.get("/max?X=15,35,200,500,459")
+        self.assertEquals(b'500\n',reply.data)
 
-        reply = self.app.get("/mean?X=2,3,4,6")
-        self.assertEqual(b'3.75 \n', reply.data)
-
-        reply = self.app.get("/avg?X=2,3,4")
-        self.assertEqual(b'3 \n', reply.data)
-
-        reply = self.app.get("/average?X=10,2.8,100")
-        self.assertEqual(b'37.6 \n', reply.data)
-
-        reply = self.app.get("/mean?X=10,2.8,100")
-        self.assertEqual(b'37.6 \n', reply.data)
-
-        reply = self.app.get("/avg?X=10,2.8,100")
-        self.assertEqual(b'37.6 \n', reply.data)
+        reply=self.app.get("/max?X=15,35,20.7,50.78,45.9")
+        self.assertEquals(b'500\n',reply.data)

@@ -1,17 +1,15 @@
 import unittest
 import main
 
+
 class AdvanceCalc(unittest.TestCase):
 
-    
     def setUp(self) -> None:
         main.app.testing = True
         self.app = main.app.test_client()
 
-    
-    
     def test_avg(self):
-        #Testing the average or mean or avg
+        # Testing the average or mean or avg
 
         reply = self.app.get("/average?X=1,2,3,4,5,6")
         self.assertEqual(b'3.5 \n', reply.data)

@@ -7,22 +7,16 @@ app = Flask(__name__)
 
 def in_take():
     if request.method != 'GET':
-        x = request.values.get('X', default=0, type=str) 
-
+        x = request.values.get('X', default=0, type=str)
     else:
-        
         x = request.args.get('X', default=0, type=str)
     try:
-        new_values=[]
+        new_values = []
         for val in x.split(','):
             new_values.append(Fraction(val))
-        
-       
     except ValueError:
         warning = "Enter a valid input vector. "
         return warning
-
-
     return new_values
 
 
@@ -39,11 +33,9 @@ def median():
             result = int(result)
             return "%d \n" % result
         else:
-            
+
             return str(float(round(result, 4))) + " \n"
 
 
-
-if __name__=="__main__":
-    app.run(debug=True)
-
+if __name__ == "__main__":
+    app.run(debug=False)

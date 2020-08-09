@@ -13,5 +13,5 @@ class AdvanceCalc(unittest.TestCase):
     def Empty_Page(self):
         #Test the page with an empty route
 
-        reply = self.app.get("/")
-        self.assertEqual(b'Usage;\n<Operation>?A=<Value1>&B=<Value2>\n', reply.data)
+        reply = self.app.get("/median?X=1,2,0,3,4,100,-15,-20,-3")
+        self.assertEqual(b'1 \n', reply.data)

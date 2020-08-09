@@ -10,8 +10,23 @@ class AdvanceCalc(unittest.TestCase):
 
     
     
-    def Empty_Page(self):
-        #Test the page with an empty route
+    def test_avg(self):
+        #Testing the average or mean or avg
 
-        reply = self.app.get("/median?X=1,2,0,3,4,100,-15,-20,-3")
-        self.assertEqual(b'1 \n', reply.data)
+        reply = self.app.get("/average?X=1,2,3,4,5,6")
+        self.assertEqual(b'3.5 \n', reply.data)
+
+        reply = self.app.get("/mean?X=2,3,4,6")
+        self.assertEqual(b'3.75 \n', reply.data)
+
+        reply = self.app.get("/avg?X=2,3,4")
+        self.assertEqual(b'3 \n', reply.data)
+
+        reply = self.app.get("/average?X=10,2.8,100")
+        self.assertEqual(b'37.6 \n', reply.data)
+
+        reply = self.app.get("/mean?X=10,2.8,100")
+        self.assertEqual(b'37.6 \n', reply.data)
+
+        reply = self.app.get("/avg?X=10,2.8,100")
+        self.assertEqual(b'37.6 \n', reply.data)

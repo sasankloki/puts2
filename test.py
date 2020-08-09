@@ -47,6 +47,15 @@ class AdvanceCalc(unittest.TestCase):
         reply = self.app.get("/max?X=1,2,45,7,0,7.5,3")
         self.assertEqual(b'45\n', reply.data)
 
+    def test_median(self):
+        # Test the page with an empty route
+
+        reply = self.app.get("/median?X=1,2,0,3,4,100")
+        self.assertEqual(b'2.5 \n', reply.data)
+
+        reply = self.app.get("/median?X=1,2,3,4,5,6")
+        self.assertEqual(b'3.5 \n', reply.data)
+
 
 if __name__ == "__main__":
     unittest.main()

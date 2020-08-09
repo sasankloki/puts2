@@ -54,6 +54,7 @@ def maximum():
             answer = int(result)
             return "%d\n" % answer
         else:
+
             return str(float(round(result, 3))) + "\n"
 
 
@@ -74,6 +75,23 @@ def mean():
         else:
 
             return str(float(round(result, 3))) + "\n"
+
+
+@app.route('/median', methods=['GET', 'POST'])
+def median():
+    try:
+        list = in_take()
+        result = statistics.median(list)
+    except ValueError:
+        warning = in_take()
+        return warning
+    else:
+        if float(result).is_integer():
+            result = int(result)
+            return "%d \n" % result
+        else:
+
+            return str(float(round(result, 3))) + " \n"
 
 
 if __name__ == "__main__":

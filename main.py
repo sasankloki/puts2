@@ -26,21 +26,24 @@ def in_take():
     return new_values
 
 
-@app.route('/median', methods=['GET', 'POST'])
-def median():
+
+@app.route('/mean', methods=['GET', 'POST'])
+@app.route('/average', methods=['GET', 'POST'])
+@app.route('/avg', methods=['GET', 'POST'])
+def mean():
     try:
-        list = in_take()
-        result = statistics.median(list)
+        new_values = in_take()
+        result =statistics.mean(new_values) 
     except ValueError:
         warning = in_take()
         return warning
     else:
         if float(result).is_integer():
-            result = int(result)
-            return "%d \n" % result
+            answer = int(result)
+            return "%d \n" % answer
         else:
             
-            return str(float(round(result, 4))) + " \n"
+            return str(float(round(result, 3))) + " \n"
 
 
 

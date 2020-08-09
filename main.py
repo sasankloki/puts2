@@ -1,6 +1,5 @@
 from flask import Flask, request
 from fractions import Fraction
-import statistics
 
 app = Flask(__name__)
 

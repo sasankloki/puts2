@@ -10,11 +10,11 @@ class AdvanceCalc(unittest.TestCase):
 
     
     
-    def test_max(self):
+    def min_test(self):
 
-        #Test script for taking  maximum value in a given list
-        reply=self.app.get("/max?X=15,35,200,500,459")
-        self.assertEquals(b'500\n',reply.data)
+        #Test script for taking  maniumum value in a given input
+        reply=self.app.get("/min?X=15,1,57,37,8,34,5")
+        self.assertEquals(b'1\n',reply.data)
 
-        reply=self.app.get("/max?X=15,35,20.7,50.78,45.9")
-        self.assertEquals(b'500\n',reply.data)
+        reply=self.app.get("/min?X=1,2,45,7,0,7.5,3")
+        self.assertEquals(b'0\n',reply.data)

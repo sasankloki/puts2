@@ -1,8 +1,8 @@
 from flask import Flask, request
 from fractions import Fraction
-import statistics
 
 app = Flask(__name__)
+
 
 
 def in_take():
@@ -27,11 +27,12 @@ def in_take():
 
 
 
-@app.route('/max', methods=['GET', 'POST'])
-def maximum():
+
+@app.route('/min', methods=['GET', 'POST'])
+def minimum():
     try:
         new_values = in_take()
-        result = max(new_values)
+        result = min(new_values)
     except ValueError:
         warning = in_take()
         return warning
@@ -42,7 +43,6 @@ def maximum():
         else:
             
             return str(float(round(result, 4))) + " \n"
-
 
 
 

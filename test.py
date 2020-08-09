@@ -30,3 +30,7 @@ class AdvanceCalc(unittest.TestCase):
 
         reply = self.app.get("/avg?X=10,2.8,100")
         self.assertEqual(b'37.6 \n', reply.data)
+
+
+if __name__ == "__main__":
+    unittest.main()

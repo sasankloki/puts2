@@ -27,13 +27,11 @@ def in_take():
 
 
 
-@app.route('/mean', methods=['GET', 'POST'])
-@app.route('/average', methods=['GET', 'POST'])
-@app.route('/avg', methods=['GET', 'POST'])
-def mean():
+@app.route('/max', methods=['GET', 'POST'])
+def maximum():
     try:
         new_values = in_take()
-        result =statistics.mean(new_values) 
+        result = max(new_values)
     except ValueError:
         warning = in_take()
         return warning
@@ -43,7 +41,8 @@ def mean():
             return "%d \n" % answer
         else:
             
-            return str(float(round(result, 3))) + " \n"
+            return str(float(round(result, 4))) + " \n"
+
 
 
 

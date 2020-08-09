@@ -17,14 +17,14 @@ def in_take():
         for val in x.split(','):
             new_values.append(Fraction(val))
         
-       
     except ValueError:
         warning = "Enter a valid input vector. "
         return warning
-
-
     return new_values
 
+@app.route('/', methods=['GET', 'POST'])
+def empty_route():
+    return 'Usage: <operation>?<X1, X2, X3, ..., XN>\n'
 
 
 @app.route('/mean', methods=['GET', 'POST'])
@@ -44,9 +44,7 @@ def mean():
         else:
             
             return str(float(round(result, 3))) + " \n"
-
-
-
+            
 if __name__=="__main__":
     app.run(debug=True)
 

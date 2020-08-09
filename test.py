@@ -4,12 +4,17 @@ import main
 class AdvanceCalc(unittest.TestCase):
 
     
-    def setUp(self) -> None:
+    def setUp(self):
         main.app.testing = True
         self.app = main.app.test_client()
 
+    def testEmpty_Page(self):
+        #Test the page with an empty route
+
+        reply = self.app.get("/")
+        self.assertEqual(b'Usage: <operation>?<X1, X2, X3, ..., XN>\n', reply.data)
     
-    
+
     def test_avg(self):
         #Testing the average or mean or avg
 
